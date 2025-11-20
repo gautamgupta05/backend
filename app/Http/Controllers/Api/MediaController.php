@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Media;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\MediaResource;
 
 class MediaController extends Controller
 {
@@ -14,7 +15,9 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        return MediaResource::collection(
+            Media::latest()->paginate(20)
+        );
     }
 
     /**
@@ -22,7 +25,22 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'file' => 'required|file|max:5120',
+        ]);
+
+        $file = $request->file('file');
+        $path = $file->store('media', 'public');
+
+        $media = Media::create([
+            'user_id' => auth()->id(),
+            'filename' => $file->getClientOriginalName(),
+            'path' => $path,
+            'mime_type' => $file->getClientMimeType(),
+            'size' => $file->getSize(),
+        ]);
+
+        return new MediaResource($media);
     }
 
     /**
@@ -44,9 +62,15 @@ class MediaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Media $media)
     {
-        //
+        if ($media->path && Storage::disk('public')->exists($media->path)) {
+            Storage::disk('public')->delete($media->path);
+        }
+
+        $media->delete();
+
+        return response()->json(['message' => 'Media deleted']);
     }
 
     public function upload(Request $request)
@@ -69,7 +93,7 @@ class MediaController extends Controller
 
         return response()->json([
             'id' => $media->id,
-            'url' => asset('storage/'.$path),
+            'url' => asset('storage/' . $path),
             'path' => $path
         ], 201);
     }
