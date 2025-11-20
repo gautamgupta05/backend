@@ -237,6 +237,10 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', NULL, '$2y$12$41keXectbnD1pSf8yl4D6OEHRXBjvxC0IbEffsaebY1K0pEiXsp7y', NULL, '2024-12-26 18:50:16', '2024-12-26 18:50:16');
+
 --
 -- Indexes for dumped tables
 --
