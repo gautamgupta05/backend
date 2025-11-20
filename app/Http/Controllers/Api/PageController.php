@@ -39,8 +39,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-              return new PageResource($page);
-
+        return new PageResource($page);
     }
 
     /**
@@ -48,7 +47,7 @@ class PageController extends Controller
      */
     public function update(UpdatePageRequest $request, Page $page)
     {
-       $data = $request->validated();
+        $data = $request->validated();
         $page->update($data);
 
         return new PageResource($page);

@@ -22,7 +22,7 @@ class ContactController extends Controller
             'message' => 'required|min:10',
         ]);
 
-        // SEND EMAIL (optional)
+        // we can add email process or store in db / SEND EMAIL (optional)
         // Mail::raw($request->message, function($msg) use ($request){
         //     $msg->to('admin@example.com')
         //         ->subject("New Contact From: " . $request->name);

@@ -118,7 +118,7 @@ It provides:
 <h2>🛠 Installation & Setup</h2>
 
 <h3>1️⃣ Clone repository</h3>
-<pre><code>git clone https://github.com/gautamg5/backend
+<pre><code>git clone https://github.com/gautamgupta05/backend
 cd backend
 </code></pre>
 
@@ -132,6 +132,7 @@ npm install
 </code></pre>
 
 <p><strong>Configure DB:</strong></p>
+<p>You can also import the database from <code>database/cms_db.sql</code>.</p>
 <pre><code>DB_DATABASE=cms_db
 DB_USERNAME=root
 DB_PASSWORD=
@@ -161,13 +162,7 @@ DB_PASSWORD=
 
 <hr>
 
-<h2>📦 Extra</h2>
-<ul>
-  <li>SQL dump (optional)</li>
-  <li>Demo video (optional)</li>
-</ul>
 
-<hr>
 
 <h2>📜 License</h2>
 <p>This project is built for assignment purposes.</p>

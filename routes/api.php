@@ -19,7 +19,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('pages', PageController::class);
 
-      // Media Manager
     Route::get('media', [MediaController::class, 'index']);
     Route::delete('media/{media}', [MediaController::class, 'destroy']);
     Route::post('media/store', [MediaController::class, 'store']);

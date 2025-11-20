@@ -5,7 +5,7 @@
 
     <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
 
-    {{-- SUCCESS MESSAGE --}}
+    
     @if(session('success'))
         <div class="mb-4 p-3 bg-green-100 text-green-700 rounded">
             {{ session('success') }}
@@ -15,7 +15,7 @@
     <form action="{{ route('contact.submit') }}" method="POST" class="space-y-5">
         @csrf
 
-        {{-- NAME --}}
+       
         <div>
             <label class="block text-gray-700 mb-1">Your Name</label>
             <input type="text" name="name" value="{{ old('name') }}"
@@ -27,7 +27,7 @@
             @enderror
         </div>
 
-        {{-- EMAIL --}}
+       
         <div>
             <label class="block text-gray-700 mb-1">Email Address</label>
             <input type="email" name="email" value="{{ old('email') }}"
@@ -39,7 +39,7 @@
             @enderror
         </div>
 
-        {{-- MESSAGE --}}
+       
         <div>
             <label class="block text-gray-700 mb-1">Your Message</label>
             <textarea name="message" rows="5"
@@ -51,7 +51,7 @@
             @enderror
         </div>
 
-        {{-- BUTTON --}}
+        
         <button class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
             Send Message
         </button>

@@ -22,9 +22,9 @@ class UpdatePageRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'title' => 'required|string|max:255',
-        'excerpt' => 'nullable|string',
-        'content' => 'nullable|string',
+            'title' => 'required|string|max:255',
+            'excerpt' => 'nullable|string',
+            'content' => 'nullable|string',
         ];
     }
 }
